@@ -5,8 +5,8 @@
 *.so
 *.dylib
 
-.env
-.env.debug
+#.env
+#.env.debug
 
 # Test binary, built with `go test -c`
 *.test
