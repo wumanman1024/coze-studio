@@ -1,10 +1,10 @@
-id: 61010
-name: Doubao-Seed-1.6
-icon_uri: default_icon/doubao_v2.png
+id: 71010
+name: Qwen3-32B
+icon_uri: default_icon/qwen_v2.png
 icon_url: ""
 description:
-    zh: 全新多模态深度思考模型，同时支持 thinking、non-thinking、auto三种思考模式。其中 non-thinking 模型对比 doubao-1.5-pro-32k-250115 模型大幅提升。
-    en: 'A brand-new multimodal deep thinking model supports three thinking modes: thinking, non-thinking, and auto. Among them, the non-thinking model has significantly improved compared to the doubao-1.5-pro-32k-250115 model.'
+    zh: 通义千问模型
+    en: qwen model description
 default_parameters:
     - name: temperature
       label:
@@ -57,7 +57,7 @@ default_parameters:
       min: "0"
       max: "1"
       default_val:
-        default_val: "0.7"
+        default_val: "0.95"
       precision: 2
       options: []
       style:
@@ -65,63 +65,36 @@ default_parameters:
         label:
             zh: 生成多样性
             en: Generation diversity
-    - name: response_format
-      label:
-        zh: 输出格式
-        en: Response format
-      desc:
-        zh: '- **JSON**: 将引导模型使用JSON格式输出'
-        en: '**Response Format**:\n\n- **JSON**: Uses JSON format for replies'
-      type: int
-      min: ""
-      max: ""
-      default_val:
-        default_val: "0"
-      options:
-        - label: Text
-          value: "0"
-        - label: JSON
-          value: "1"
-      style:
-        widget: radio_buttons
-        label:
-            zh: 输入及输出设置
-            en: Input and output settings
 meta:
-    protocol: ark
+    protocol: qwen
     capability:
         function_call: true
         input_modal:
             - text
-            - image
-            - video
-        input_tokens: 224000
-        json_mode: true
-        max_tokens: 256000
+        input_tokens: 128000
+        json_mode: false
+        max_tokens: 128000
         output_modal:
             - text
-        output_tokens: 32000
-        prefix_caching: true
-        reasoning: true
+        output_tokens: 16384
+        prefix_caching: false
+        reasoning: false
         prefill_response: false
     conn_config:
-        base_url: "https://ark.cn-beijing.volces.com/api/v3/"
-        api_key: "333e31c2-bbb6-43ef-a580-33ad72c1f1fa"
+        base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        api_key: "sk-007ec9e14fd34d08a095fada8fc3a41a"
         timeout: 0s
-        model: "doubao-seed-1.6" # model_id / endpoint_id
-        temperature: 0.1
+        model: "deepseek-v3"
+        temperature: 0.7
         frequency_penalty: 0
         presence_penalty: 0
         max_tokens: 4096
-        top_p: 0.7
+        top_p: 1
         top_k: 0
         stop: []
-        enable_thinking: true
-        ark:
-            region: ""
-            access_key: ""
-            secret_key: ""
-            retry_times: null
-            custom_header: {}
+        qwen:
+            response_format:
+                type: text
+                jsonschema: null
         custom: {}
     status: 0
